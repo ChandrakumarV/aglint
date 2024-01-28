@@ -1,0 +1,9 @@
+.inputcontainer label{
+    font-size: 1.4rem;
+}
+
+.inputcontainer{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

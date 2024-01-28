@@ -1,0 +1,183 @@
+.DashboardContainer{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: min-content max-content 1fr;
+    grid-template-rows: min-content 1fr;
+}
+
+.DashboardContainer>*{
+/* padding: 10px; */
+}
+
+.DashboardContainer a{
+    text-decoration: none;
+}
+.DashboardContainer nav{
+border-right: 1px solid rgba(233, 235, 237, 1);
+grid-row: 1/-1;
+
+}
+.DashboardContainer aside{
+border-right: 1px solid rgba(233, 235, 237, 1);
+grid-row: 1/-1;
+
+}
+.DashboardContainer header{
+border-bottom: 1px solid rgba(233, 235, 237, 1);
+
+}
+.DashboardContainer main{
+grid-row: 2/-1;
+grid-column: 3/-1;
+}
+
+.DashboardContainer header .left{
+display: flex;
+align-items: center;
+gap: 20px;
+}
+
+/* ------------------------------- header ---------------------- */
+.DashboardContainer header{
+padding: 10px 20px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.DashboardContainer header h1{
+font-size: 3rem;
+color: #FF6224;
+
+}
+
+.DashboardContainer header button{
+    padding: 5px 30px ;
+    border: none;
+    background-color: #FF6224;
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.DashboardContainer header button:hover{
+    background-color: #ff723a;
+}
+/* ------------------------------- Nav bar -------------------- */
+.DashboardContainer nav{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+
+}
+
+.DashboardContainer nav .topContainer,
+.DashboardContainer nav .bottomContainer{
+
+/* background-color: rgb(158, 158, 158); */
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 10px;
+}
+
+.DashboardContainer nav img{
+padding: 10px;
+border-radius: 7px;
+
+}
+.topContainer img:not(:first-child):hover,
+.bottomContainer img:hover{
+cursor: pointer;
+background-color: rgb(233, 233, 233);
+
+}
+
+/* -----------------------  aside  -------------------------------- */
+.DashboardContainer aside{
+padding: 30px 10px;
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+.addJobBtn{
+padding: 15px;
+font-weight: 550;
+font-size: 1.4rem;
+color: rgb(56, 56, 56);
+background-color: rgba(245, 245, 245, 0.678);
+border-radius: 5px;
+display: flex;
+align-items: center;
+border: none;
+gap: 10px;
+cursor: pointer;
+border: 1.5px solid rgb(197, 197, 197);
+}
+
+.addJobBtn:hover,
+.subMenuIcon:hover
+{
+background-color: rgb(219, 219, 219);
+}
+.subMenuIcon{
+padding: 5px 10px;
+background-color: rgba(245, 245, 245, 0.678);
+border-radius: 5px;
+color: rgba(47, 57, 65, 1);
+font-size: 1.4rem;
+display: flex;
+justify-content: space-between;
+}
+.subMenuIcon p{
+padding: 1px 10px;
+font-size: 1.1rem;
+border-radius: 10px;
+color: white;
+/* background-color: #FF6224; */
+display: flex;
+align-items: center;
+}
+
+.DashboardContainer aside .subMenuIcon:nth-child(2) p{
+    background-color: rgba(51, 127, 189, 1);
+}
+.DashboardContainer aside .subMenuIcon:nth-child(3) p{
+    background-color: rgba(34, 143, 103, 1);
+}
+.DashboardContainer aside .subMenuIcon:nth-child(4) p{
+    background-color: rgba(237, 143, 28, 1);
+}
+.DashboardContainer aside .subMenuIcon:nth-child(5) p{
+    background-color: rgba(217, 63, 76, 1);
+}
+
+.DashboardContainer aside :global(.active){
+    background-color: rgba(212, 212, 212, 0.76);
+}
+
+/* ----------------------- main ------------------------------- */
+.DashboardContainer main{
+/* height: 200vh; */
+/* overflow-y: scroll; */
+overflow-x: hidden;
+}
+
+
+.DashboardContainer main::-webkit-scrollbar {
+width: 10px;
+}
+
+.DashboardContainer main::-webkit-scrollbar-track {
+background: transparent; 
+}
+
+.DashboardContainer main::-webkit-scrollbar-thumb {
+border-radius: 30px;
+}
+
+.DashboardContainer main::-webkit-scrollbar-thumb:hover {
+background: #555; 
+}

@@ -1,0 +1,102 @@
+.loginContainer{
+    width: 45rem;
+    background-color: #f8f9f9;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border-radius: 10px;
+}
+
+.loginContainer h3{
+    font-size: 2.2rem;
+    color: rgb(70, 70, 70);
+}
+
+.loginContainer .or{
+    align-self: stretch;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    color: #999;
+}
+
+.loginContainer .or::after ,
+.loginContainer .or::before {
+    content: " ";
+    display: inline-block;
+    height: .1px;
+    background-color: #969696;
+    flex-grow: 1;
+}
+
+
+.signUpIcon{
+    margin-block: 10px ;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.signUpIcon img{
+    width: 50px;
+    aspect-ratio: 1/1;
+    padding: 15px;
+    background-color: rgba(233, 233, 233, 0.548);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.signUpIcon img:hover{    
+    background-color: transparent;
+}
+
+.loginContainer form{
+    flex-grow: 1;
+    align-self: stretch;
+}
+
+.signup{
+    color: #68737D;
+}
+
+.signupForgot{
+    font-size: 1.4rem;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* ---------------- form ----------------- */
+
+
+.inputContainer{
+    margin-bottom: 15px;
+}
+
+.inputContainer>p{
+    font-size: 1.4rem;
+    color: rgb(255, 68, 68);
+}
+.inputBox{
+    width: 100%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 5px ;
+    border: 1.5px solid rgb(201, 201, 201);
+    margin-bottom: 5px;
+}
+
+.inputBox input{
+    flex-grow: 1;
+    font-size: 1.5rem;
+    outline: none;
+    border: none;
+    padding: 5px ;
+}

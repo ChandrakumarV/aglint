@@ -1,0 +1,88 @@
+
+.CompanyDetailsContainer{
+    max-width: 60rem;
+    margin: 100px auto 0 ;
+}
+.CompanyDetailsContainer>h3{
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+.firstInputcontainer{
+    max-width: 600px;
+    padding: 40px;
+    background-color: rgb(247, 247, 247);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+.firstInputcontainer>p{
+    font-size: 1.4rem;
+    font-weight: 550;
+
+}
+
+.firstInputcontainer .inputcontainers{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.secondInputcontainer{
+    max-width: 600px;
+    padding: 40px;
+    background-color: rgb(247, 247, 247);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.secondInputcontainer>p{
+    font-size: 1.4rem;
+    font-weight: 550;
+
+}
+
+
+.secondInputcontainer .inputcontainers{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.secondInputcontainer .inputcontainer{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.inputcontainer label{
+    font-size: 1.4rem;
+}
+
+.btns{
+    /* background-color: lightblue; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    
+}
+
+
+.btns .btnRight{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+
+.errorElement{
+    font-weight: 100 !important;
+    color: red;
+}

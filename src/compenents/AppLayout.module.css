@@ -1,0 +1,23 @@
+.appLayoutContainer{
+    width: 100%;
+    min-height: 100svh;
+    /* background-color: lightblue; */
+    display: flex;
+    flex-direction: column;
+}
+.appLayoutContainer header{
+    padding: 20px;
+    text-align: center;
+}
+
+.appLayoutContainer header img{
+    width: 100px;
+}
+.appLayoutContainer main{
+    padding: 100px 20px 0;
+    flex-grow: 1;
+    align-items: flex-start;
+    display: flex;
+    justify-content: center;
+    /* background-color: linen; */
+}

@@ -1,0 +1,36 @@
+
+.buttonContainer{
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.buttonContainer[disabled]:disabled{
+    opacity: .7;
+    cursor:not-allowed;
+}
+
+.primary{
+    width: 100%;
+    background-color: #1F73B7;
+}
+.submit{
+    /* width: 100%; */
+    background-color: #1F73B7;
+}
+.secondary{
+    background-color: rgb(178, 66, 32);
+}
+.back{
+    background-color: rgb(176, 178, 32);
+}
+
+.primary:hover{
+    
+    background-color: #1966a5;
+}
+
+

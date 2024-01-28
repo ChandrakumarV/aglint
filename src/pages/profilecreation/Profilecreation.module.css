@@ -1,0 +1,138 @@
+.profileCreationContainer{ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.profileCreationContainer>h3{
+    font-size: 1.8rem;
+    text-align: center;
+   color: rgba(47, 57, 65, 1);
+   display: flex;
+   align-items: flex-start;
+   gap: 10px;
+}
+.profileCreationContainer form{
+    max-width: 50rem;
+    background-color: #f8f9f9;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+}
+
+
+/* ---------------- form ----------------- */
+
+
+.inputContainer{
+    align-self: stretch;
+    margin-bottom: 10px;
+}
+
+.inputContainer>p:first-child{
+    font-size: 1.4rem;
+    font-weight: 550;
+    color: rgb(68, 79, 88);
+    margin-bottom: 5px;
+}
+.inputContainer .errorElement{
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: rgb(255, 68, 68);
+}
+
+.inputBox{
+    background-color: white;
+    display: flex;
+    align-items: flex-start;
+    padding: 5px 10px;
+    border-radius: 5px ;
+    border: 1.5px solid rgb(201, 201, 201);
+    margin-bottom: 5px;
+}
+
+.inputBox input{
+    flex-grow: 1;
+    font-size: 1.5rem;
+    outline: none;
+    border: none;
+    padding: 5px ;
+}
+
+
+.inputContainer input[type="file"]::file-selector-button {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        outline: none;
+        cursor: pointer;
+        text-decoration:none;
+        color: rgba(31, 115, 183, 1);
+        /* font-weight: 550; */
+    }
+    
+    
+    .inputContainer input[type='file'] {
+        color: transparent;
+
+  }
+
+.inputBox .size{
+    width: 100%;
+    padding: 5px ;
+    border: none;
+    outline: none;
+}
+.inputBox .phone{
+    background-color: transparent;
+    padding: 5px ;
+    border: none;
+    outline: none;
+}
+.PCbtns{
+    align-self: stretch;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ------------------- logo uplaod -------------- */
+/* .uploadLogo{
+    
+} */
+.uploadLogo input{
+    padding: 0;
+}
+
+.uploadLogo .textContent{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+}
+
+.uploadLogo p{
+    width: 80%;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    color: rgba(104, 115, 125, 1);
+
+}
+.uploadLogo .inputBox{
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.uploadLogo img{
+    width: 20%;
+    object-fit: contain;
+    aspect-ratio: 1/1;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(236, 236, 236, 0.479);
+}
