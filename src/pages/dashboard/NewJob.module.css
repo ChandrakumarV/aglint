@@ -33,6 +33,15 @@
     margin-top: 20px;
     cursor: pointer;
 }
+.newJobContainer form  button:hover{
+    background-color: #eb5b22;
+
+}
+
+.newJobContainer form  button:disabled{
+    opacity: .8;
+    cursor: no-drop;
+}
 .newJobContainer form .inputcontainer{
     display: flex;
     flex-direction: column;

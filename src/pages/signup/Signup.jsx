@@ -15,7 +15,7 @@ import {toast} from 'react-hot-toast'
 
 function Signup() {
 
-  const {isAuth,isLoading} = useSelector(state => state.user)
+  const {isAuth,isLoading} = useSelector(state => state.user) 
 
   if(isLoading) return <Spinner/>
 
@@ -47,18 +47,26 @@ function Form(){
     const [isShow, setIsShow] = useState(false);
     const [isShowRe, setIsShowRe] = useState(false);
     const { register, handleSubmit, formState ,getValues,reset } = useForm();
+    const [isLoad,setIsLoading] = useState(false)
+
+  
     const { errors } = formState;
   
     async function sumbitHandler(data) {
+      setIsLoading(true)
       try{
         const res = await signup(data)
         if(res){
-          toast.success( "Hi ",res.user.user_metadata.full_name," please confirm a email")
+          toast.success( `Hi, ${res.user.user_metadata.full_name} please confirm a email`)
           reset();
         }
       }
       catch(error){
         toast.error(error.message)
+      }
+      finally{
+        setIsLoading(false)
+
       }
         
     }
@@ -155,7 +163,7 @@ function Form(){
         </div>
   
   
-        <Button type={"submit"} style={{width:"100%"}}>Sign up</Button>
+        <Button type={"submit"} style={{width:"100%"}} disabled={isLoad}>{isLoad?"Loading...":"Sign up"}</Button>
       </form>
     )
 }

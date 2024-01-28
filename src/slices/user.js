@@ -30,13 +30,3 @@ const userSlice = createSlice({
 
 export const { setAuthTrue,setAuthFalse,setLoadingTrue ,setLoadingFalse} = userSlice.actions;
 export default userSlice.reducer;
-
-// signup:{
-//     prepare(fullName,email){
-//         return {payload:{fullName,email}}
-//     },
-//     reducer(state,action){
-//         state.fullName += action.payload.fullName;
-//         state.email += action.payload.email;
-//     }
-// },

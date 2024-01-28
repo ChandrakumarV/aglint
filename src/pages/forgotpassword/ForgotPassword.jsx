@@ -2,18 +2,15 @@ import styles from './ForgotPassword.module.css'
 import Button from '../../ui/Button'
 import To from '../../ui/To'
 import { useForm } from 'react-hook-form'
-import { useNavigate,Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import ErrorMessage from '../../ui/ErrorMessage';
 import {useSelector} from 'react-redux';
 import Spinner from '../../ui/Spinner';
 
 function ForgotPassword() {
-
-  
  
     const {register,handleSubmit,formState} = useForm()
     const {errors} = formState
-    const navigate = useNavigate()
  
     const {isAuth,isLoading} = useSelector(state => state.user)
 
@@ -23,7 +20,6 @@ function ForgotPassword() {
     
     async function sumbitHandler(data){
       console.log(data)
-      navigate('/updatepassword')
     }
 
 

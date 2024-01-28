@@ -60,7 +60,7 @@ export async function signup(signupFormData){
             data: {
               full_name: name,
             },
-            emailRedirectTo: 'http://localhost:5173/aglint/optionpick'
+            emailRedirectTo: `${window.location.origin}/aglint`
           }
         }
     )
@@ -79,7 +79,7 @@ export async function forgotPassword({email}){
 
 const { data, error } = await supabase.auth.api.resetPasswordForEmail(
   email,
-  { redirectTo: 'http://localhost:5173/aglint/updatepassword' }
+  { redirectTo:  `${window.location.origin}/aglint` }
 )
 
 console.log(data,error)

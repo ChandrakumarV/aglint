@@ -1,7 +1,7 @@
 
 .CompanyDetailsContainer{
     max-width: 60rem;
-    margin: 100px auto 0 ;
+    margin: 0 auto 0 ;
 }
 .CompanyDetailsContainer>h3{
     text-align: center;

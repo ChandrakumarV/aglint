@@ -1,0 +1,30 @@
+.profileContainer{
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+}
+
+.profileContainer>h1{
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.detailsContainer{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.detail{
+    padding: 20px 40px;
+    background-color: rgb(233, 233, 233);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+}
+.detail h3{
+    font-size: 1.8rem;
+}
+.detail p{
+    font-size: 1.4rem;
+}

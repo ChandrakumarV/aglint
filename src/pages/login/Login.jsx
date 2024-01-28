@@ -52,16 +52,22 @@ function Form() {
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
   const dispatch = useDispatch()
+  const [isLoad,setIsLoad] = useState(false)
 
   
   async function formSumbitHandler(data) {
+
+    setIsLoad(true)
     try{
       const user = await  loginUser(data)
       if(user)
-        dispatch(setAuthTrue(user))
-    }
-    catch(error){
-      toast.error(error.message)
+      dispatch(setAuthTrue(user))
+  }
+  catch(error){
+    toast.error(error.message)
+  }
+  finally{
+    setIsLoad(false)
     }
   }
 
@@ -115,7 +121,7 @@ function Form() {
         )}
       </div>
 
-      <Button type={"submit"} style={{width:"100%"}}>Login</Button>
+      <Button type={"submit"} style={{width:"100%"}} disabled={isLoad}>{isLoad?"Loading...":"Login"}</Button>
     </form>
   );
 }
