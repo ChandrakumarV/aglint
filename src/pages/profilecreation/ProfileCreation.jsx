@@ -6,14 +6,24 @@ import { useNavigate } from "react-router-dom";
 import tickMark from '../../assets/tick.svg'
 import { useState } from "react";
 import ErrorMessage from '../../ui/ErrorMessage';
+import Spinner from "../../ui/Spinner";
+import { companyProfileUpdate } from "../../services/apiAuth";
+import {toast } from 'react-hot-toast'
+import {useSelector } from 'react-redux'
 
 
 function ProfileCreation() {
+  
+  const[isLoad,setIsLoading] = useState(false)
+
+  
+  if(isLoad) return <Spinner/>
+
   return (
     <>
     <div className={styles.profileCreationContainer}>
      <h3><img src={tickMark} alt="" /> Company details fetched successfully. Kindly confirm and continue.</h3>
-      <Form />
+      <Form setIsLoading={setIsLoading}/>
 
     </div>
     </>
@@ -23,11 +33,28 @@ function ProfileCreation() {
 
 
 
-function Form() {
+function Form({setIsLoading}) {
   const { register, handleSubmit, formState } = useForm();
+  const [logo,setLogo ] = useState()
+  const {user:{email}} = useSelector(state => state.user)
   const navigate = useNavigate();
   const { errors } = formState;
-  const [logo,setLogo ] = useState()
+
+  async function sumbitHandler(formData) {
+    setIsLoading(true)
+    try{
+      await companyProfileUpdate({...formData,email})
+      navigate('/companydetails')
+    }
+    catch(error){
+      toast.error("Something went wrong")
+    }
+    finally{
+      setIsLoading(false)
+    }
+
+  }
+
 
   function imgChange(files,isOk){
     if(isOk){
@@ -40,10 +67,6 @@ function Form() {
   }
 
 
-  async function sumbitHandler(data) {
-    console.log(data)
-    navigate('/companydetails')
-  }
 
 
   return (
@@ -100,7 +123,7 @@ function Form() {
         <p>Employee Size</p>
         <div className={styles.inputBox}>
             
-            <select  id="employee_size" className={styles.size} {...register("employee_size", { required: "This field is reqired" })}>
+            <select  id="no_emp" className={styles.size} {...register("no_emp", { required: "This field is reqired" })}>
                 <option value=""></option>
                 <option value="10-20">10-20</option>
                 <option value="20-50">20-50</option>
@@ -108,8 +131,8 @@ function Form() {
                 <option value="100-500">100-500</option>
             </select>
         </div>
-            {errors?.employee_size?.message && (
-                <p className={styles.errorElement}>{errors?.employee_size?.message}</p>
+            {errors?.no_emp?.message && (
+                <p className={styles.errorElement}>{errors?.no_emp?.message}</p>
                 )}
       </div>
 
@@ -142,15 +165,15 @@ function Form() {
           <input
             type="number"
             placeholder="enter a phone number"
-            id="email"
-            {...register("phone_number", { 
+            id="phone"
+            {...register("phone", { 
                 required: "This field is required",
                 minLength:{value : 10,message:"Minimum 10 character"}
             })}
           />
         </div>
-        {errors?.phone_number?.message && (
-          <p className={styles.errorElement}>{errors?.phone_number?.message}</p>
+        {errors?.phone?.message && (
+          <p className={styles.errorElement}>{errors?.phone?.message}</p>
         )}
       </div>
 

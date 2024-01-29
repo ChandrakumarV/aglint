@@ -3,19 +3,36 @@ import Button from '../../ui/Button'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
 import To from '../../ui/To';
-
+import { updatePassword } from '../../services/apiAuth';
+import {toast} from 'react-hot-toast'
+import { useState } from 'react';
 
 function UpdatePassword() {
 
+  const [isLoad,setIsLoad] = useState(false)
     const navigate = useNavigate()
-
-    const {register,handleSubmit,formState} = useForm()
+    
+    const {register,handleSubmit,formState,reset} = useForm()
     const {errors} = formState
-
-
+    
+    
     async function sumbitHandler(data){
-      console.log(data)
-      navigate('/dashboard')
+      setIsLoad(true)
+      try{
+        
+        await updatePassword(data)
+        toast.success("Password update successfully")
+        reset()
+        setTimeout(() => {
+          navigate('/dashboard')
+        }, 1500);
+      }
+      catch(error){
+        toast.error(error.message)
+      }
+      finally{
+        setIsLoad(false)
+      }
     }
 
 
@@ -27,32 +44,12 @@ function UpdatePassword() {
 
         <form onSubmit={handleSubmit(sumbitHandler)}>
 
-            {/* <div className={styles.inputContainer}>
-            <div className={styles.inputBox}>
-              <input
-                type="text"
-                placeholder="enter a email"
-                id="email"
-                {...register("email", { 
-                  required: "This field is required",
-                  pattern:{
-                    value : /\S+@\S+\.\S+/,
-                    message :"please provide a valide email address",
-                  }
-                })}
-              />
-            </div>
-            {errors?.email?.message && (
-              <p className={styles.errorElement}>{errors?.email?.message}</p>
-            )}
-          </div> */}
-
 
         <div className={styles.inputContainer}>
           <div className={styles.inputBox}>
             <input
               type="text"
-              placeholder="New password"
+              placeholder="Enter new password"
               id="new_password"
               {...register("new_password", { 
                 required: "This field is required",
@@ -69,7 +66,7 @@ function UpdatePassword() {
         </div>
   
 
-           <Button type={'primary'}>update password</Button>
+           <Button type={'primary'} disabled={isLoad}>{isLoad?"Updating...":"update password"}</Button>
         </form>
 
          <To to={'/'}>Back to Dashboard</To>

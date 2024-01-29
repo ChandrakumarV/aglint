@@ -7,26 +7,33 @@ import ErrorMessage from '../../ui/ErrorMessage';
 import {useSelector} from 'react-redux';
 import Spinner from '../../ui/Spinner';
 import { forgotPassword } from '../../services/apiAuth';
+import { useState } from 'react';
+import {toast} from 'react-hot-toast'
 
 function ForgotPassword() {
  
-    const {register,handleSubmit,formState} = useForm()
+    const {register,handleSubmit,formState,reset} = useForm()
+    const {isAuth,isLoading} = useSelector(state => state.user)
+    const [isLoad,setIsLoading] = useState(false)
     const {errors} = formState
  
-    const {isAuth,isLoading} = useSelector(state => state.user)
 
     if(isLoading) return <Spinner/>
     if(isAuth) return <Navigate replace={true} to="/dashboard"/>
   
     
     async function sumbitHandler(data){
+      setIsLoading(true)
       try{
         await forgotPassword(data)
-        console.log("success")
-
+        toast.success("Reset Link send successfully")
+        reset()
       }
       catch(error){
-        console.log(error)
+        toast.error("Some thing went wrong")
+      }
+      finally{
+        setIsLoading(false)
       }
     }
 
@@ -42,7 +49,7 @@ function ForgotPassword() {
           <div className={styles.inputBox}>
             <input
               type="text"
-              placeholder="enter a email"
+              placeholder="Enter a email"
               id="email"
               {...register("email", { 
                 required: "This field is required",
@@ -59,7 +66,7 @@ function ForgotPassword() {
         </div>
   
 
-           <Button type={'primary'} >Send reset link</Button>
+           <Button type={'primary'} disabled={isLoad}>{isLoad?"Sending...":"Send reset link"}</Button>
         </form>
 
          <To to={'/'}>Back to Login</To>

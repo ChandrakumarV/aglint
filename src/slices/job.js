@@ -23,9 +23,6 @@ const jobSlice = createSlice({
   name: "jobs",
   initialState,
   reducers: {
-    getJobss(state){
-      console.log(state)
-    }
   },
   extraReducers : (builder)=>{
     builder.addCase(fetchJobs.pending,(state)=>{

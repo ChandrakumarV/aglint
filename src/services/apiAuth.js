@@ -35,7 +35,6 @@ export async function logout(){
 }
 
 export async function signUpWithGoogle(){
-  console.log("googlele")
   let { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google'
   })
@@ -48,8 +47,6 @@ export async function signUpWithGoogle(){
 
 export async function signup(signupFormData){
 
-    console.log(signupFormData)
-
     const {email,name,password} = signupFormData
 
     const { data, error } = await supabase.auth.signUp(
@@ -60,13 +57,11 @@ export async function signup(signupFormData){
             data: {
               full_name: name,
             },
-            emailRedirectTo: `https://chandrakumarv.github.io/`
+            emailRedirectTo: `${window.location.origin}/`
           }
         }
     )
 
-    console.log("data :",data)
-    console.log("error :",error)
     if(error) throw new Error(error.message)
       
       return data
@@ -77,23 +72,84 @@ export async function signup(signupFormData){
 
 export async function forgotPassword({email}){
 
-const { data, error } = await supabase.auth.resetPasswordForEmail(
-  email,{ redirectTo:  `https://chandrakumarv.github.io/` }
+const {  error } = await supabase.auth.resetPasswordForEmail(
+  email,{ redirectTo:  `${window.location.origin}/` }
 )
 
-console.log(data,error)
 if(error) throw new Error(error)
 }
 
 
 export async function updatePassword({new_password}){
 
-  const { data, error } = await supabase.auth.updateUser({
+  const {  error } = await supabase.auth.updateUser({
     password: new_password,
   })
   
-    console.log(data,error)
     if(error) throw new Error(error)
 }
 
 
+
+export async function OptionUpdate({email,value}){
+  const { error } = await supabase
+  .from('profile')
+  .update({ option : value })
+  .eq('email', email)
+
+  if(error) throw new Error(error)
+}
+
+export async function webUrlUpdate({email,website_url}){
+  const { error } = await supabase
+  .from('profile')
+  .update({ website_url : website_url })
+  .eq('email', email)
+
+  if(error) throw new Error(error)
+}
+
+export async function companyProfileUpdate({company_name,no_emp,industry_type,phone,email}){
+
+  const { error } = await supabase
+  .from('profile')
+  .update({ company_name,no_emp,industry_type,phone })
+  .eq('email', email)
+
+  if(error) throw new Error(error)
+}
+
+
+
+export async function atsMainUpdate({ats,goals,email}){
+
+  const { error } = await supabase
+  .from('profile')
+  .update({ats_system:ats,goals})
+  .eq('email', email)
+
+  if(error) throw new Error(error)
+}
+
+export async function profileCompleted(email){
+
+
+  const { error } = await supabase
+  .from('profile')
+  .update({is_profile_complete:1})
+  .eq('email', email)
+
+  if(error) throw new Error(error)
+}
+
+export async function getProfile(email){
+
+  let { data: profile, error } = await supabase
+  .from('profile')
+  .select('*')
+  .eq('email', email)
+
+  if(error) throw new Error(error)
+
+  return profile
+}

@@ -4,13 +4,12 @@ import { supabase } from "./supabase";
 
 export async function addNewjob(formData){
     const {job_name,no_emp,location,type,status,user_id} = formData;
-    const { data,error } = await supabase
+    const { error } = await supabase
         .from('jobs')
         .insert([
             { job_name ,no_emp,location,type,status,user_id},
         ])
 
-        console.log(data)
     if(error)
         throw new Error(error)
 }

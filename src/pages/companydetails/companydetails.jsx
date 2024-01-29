@@ -9,6 +9,10 @@ import { useState } from "react";
 import RadioItem from "../../ui/RadioItem";
 import {useNavigate} from 'react-router-dom'
 import ErrorMessage from "../../ui/ErrorMessage";
+import { atsMainUpdate } from "../../services/apiAuth";
+import {useSelector } from 'react-redux'
+import {toast} from 'react-hot-toast';
+import Spinner from "../../ui/Spinner";
 
 const atsList = [
   {
@@ -37,11 +41,11 @@ const atsList = [
     label: "Other",
     img: null,
   },
-  {
-    value: "I do not use any ATS system",
-    label: "I do not use any ATS system",
-    img: null,
-  },
+  // {
+  //   value: "I do not use any ATS system",
+  //   label: "I do not use any ATS system",
+  //   img: null,
+  // },
 ];
 
 const mainGoalsList = [
@@ -54,9 +58,9 @@ const mainGoalsList = [
   {
     title: "Filtering candidates",
   },
-  {
-    title: "All of it",
-  },
+  // {
+  //   title: "All of it",
+  // },
 ];
 
 
@@ -64,15 +68,28 @@ const mainGoalsList = [
 function CompanyDetails() {
   const [ats,setAts] = useState("")
   const [goals,setGoals] = useState([])
-
+  const {user:{email}} = useSelector(state => state.user)
   const [ATSerror,setATSerror] = useState(false)
   const [GoalError,setGoalError] = useState(false)
+  const [isLoad,setIsLoad] = useState(false)
   const navigate = useNavigate()
 
-  async function sumbitHandler(data) {              //get the final data of form
-    console.log(data)
-    navigate('/Kickstart')
+  async function sumbitHandler(data) { 
+    setIsLoad(true)
+    try{
+      await atsMainUpdate({...data,email})
+      navigate('/Kickstart')
+    }
+    catch(error){
+      toast.error("Something went wrong")
+    }
+    finally{
+      setIsLoad(false)
+
+    }
   }
+
+
     async function errorCheck(e) {
     e.preventDefault()
 
@@ -106,6 +123,8 @@ function CompanyDetails() {
   }
 
 
+
+  if(isLoad) return <Spinner/>
 
   return (
     <div className={styles.CompanyDetailsContainer}>
