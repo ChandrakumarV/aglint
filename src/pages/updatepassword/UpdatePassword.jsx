@@ -72,7 +72,7 @@ function UpdatePassword() {
            <Button type={'primary'}>update password</Button>
         </form>
 
-         <To to={'/'}>Back</To>
+         <To to={'/'}>Back to Dashboard</To>
 
     </div>
     )

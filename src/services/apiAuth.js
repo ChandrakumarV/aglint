@@ -60,7 +60,7 @@ export async function signup(signupFormData){
             data: {
               full_name: name,
             },
-            emailRedirectTo: `${window.location.origin}/aglint`
+            emailRedirectTo: `https://chandrakumarv.github.io/`
           }
         }
     )
@@ -77,9 +77,8 @@ export async function signup(signupFormData){
 
 export async function forgotPassword({email}){
 
-const { data, error } = await supabase.auth.api.resetPasswordForEmail(
-  email,
-  { redirectTo:  `${window.location.origin}/aglint` }
+const { data, error } = await supabase.auth.resetPasswordForEmail(
+  email,{ redirectTo:  `https://chandrakumarv.github.io/` }
 )
 
 console.log(data,error)

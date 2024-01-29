@@ -6,6 +6,7 @@ import { Navigate } from 'react-router-dom';
 import ErrorMessage from '../../ui/ErrorMessage';
 import {useSelector} from 'react-redux';
 import Spinner from '../../ui/Spinner';
+import { forgotPassword } from '../../services/apiAuth';
 
 function ForgotPassword() {
  
@@ -19,7 +20,14 @@ function ForgotPassword() {
   
     
     async function sumbitHandler(data){
-      console.log(data)
+      try{
+        await forgotPassword(data)
+        console.log("success")
+
+      }
+      catch(error){
+        console.log(error)
+      }
     }
 
 

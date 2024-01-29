@@ -9,7 +9,7 @@ import {useDispatch } from 'react-redux'
 import {toast} from 'react-hot-toast'
 
 function NewJob() {
-  const { register, handleSubmit, formState } = useForm();
+  const { register, handleSubmit, formState,reset} = useForm();
   const { errors } = formState;
   const {user:{id:user_id}} = useSelector(state => state.user)
   const [isLoad,setIsLoad] = useState(false)
@@ -22,6 +22,7 @@ function NewJob() {
     try{
       await addNewjob({...data,user_id})
       dispatch(fetchJobs(user_id))
+      reset()
       toast.success("Job successfully Added")
     }
     catch(error){
