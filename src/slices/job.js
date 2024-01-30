@@ -23,6 +23,9 @@ const jobSlice = createSlice({
   name: "jobs",
   initialState,
   reducers: {
+    clearJobs(state){
+      state.jobs = []
+    }
   },
   extraReducers : (builder)=>{
     builder.addCase(fetchJobs.pending,(state)=>{
@@ -41,3 +44,4 @@ const jobSlice = createSlice({
 
 
 export default jobSlice.reducer;
+export const {clearJobs} =  jobSlice.actions;

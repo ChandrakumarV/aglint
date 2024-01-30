@@ -17,7 +17,7 @@ import { setAuthFalse } from "../../Slices/user";
 import {toast} from 'react-hot-toast';
 import { useDispatch,useSelector } from 'react-redux'
 import { useEffect, useState } from "react";
-import { fetchJobs } from "../../slices/job";
+import { clearJobs, fetchJobs } from "../../slices/job";
 // import Spinner from '../../ui/Spinner'
 
 function Dashboard() {//for fetch a jobs from sb
@@ -51,6 +51,7 @@ function Header() {
     try{
       await logout()
       dispatch(setAuthFalse())
+      dispatch(clearJobs())
     }
     catch(error){
       toast.error(error.message)
