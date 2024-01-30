@@ -37,7 +37,8 @@ const options = [
 function OptionPick() {
   const[isLoad,setIsLoading] = useState(false)
   const navigate = useNavigate()
-  const {user:{email}} = useSelector(state => state.user)
+  const {user} = useSelector(state => state.user)
+  const {email,user_metadata:{full_name}} = user
 
   async function clickHander({value}) {
     setIsLoading(true)
@@ -57,7 +58,7 @@ function OptionPick() {
 
       {
         isLoad?<Spinner/>:<>
-        <h3>Hi Alex, Welcome to the new era of recruiting.</h3>
+        <h3>Hi {full_name}, Welcome to the new era of recruiting.</h3>
       <p>
         Please pick the option that best explains what you&apos;re looking for.
       </p>
